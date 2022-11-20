@@ -142,3 +142,17 @@ function editarArticulo () {
     createForm.querySelector('button[type="submit"]').textContent = 'Agregar'
     editando = false;
 }
+
+function eliminarArticulo (id) {
+    listaArticulos = listaArticulos.filter(articulo => articulo.id !== id )
+    limpiarHTML();
+    mostrarArticulos();
+    localStorage.setItem("items",JSON.stringify(listaArticulos))
+}
+
+function limpiarHTML () {
+    const divArticulos = document.querySelector('.div-articulos');
+    while(divArticulos.firstChild) {
+        divArticulos.removeChild(divArticulos.firstChild);
+    }
+}
